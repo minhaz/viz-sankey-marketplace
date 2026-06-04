@@ -236,7 +236,7 @@ const vis: Sankey = {
         })
         .on('click', function (event: MouseEvent, d: Cell) {
           // Add drill menu event
-          const coords = d3.pointer(event)
+
           LookerCharts.Utils.openDrillMenu({
             links: d.drillLinks,
             event: event
