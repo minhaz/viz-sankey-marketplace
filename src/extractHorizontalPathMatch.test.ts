@@ -3,6 +3,7 @@
 // This software is subject to the Google Cloud Terms of Service, as
 // modified by the "General Software Terms" of the Google Cloud Service Specific Terms, available at: https://cloud.google.com/terms/service-terms.
 
+import { describe, expect, it } from '@jest/globals';
 import { extractHorizontalPathMatch } from './utils';
 
 describe('extractHorizontalPathMatch', () => {
