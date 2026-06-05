@@ -3,6 +3,7 @@
     "module": "es6",
     "moduleResolution": "node",
     "noImplicitReturns": true,
+    "allowJs": true,
     "esModuleInterop": true,
     "outDir": "lib",
     "strict": true,

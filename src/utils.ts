@@ -3,24 +3,18 @@
 // This software is subject to the Google Cloud Terms of Service, as
 // modified by the "General Software Terms" of the Google Cloud Service Specific Terms, available at: https://cloud.google.com/terms/service-terms.
 
-import * as d3 from 'd3';
+import * as d3 from 'd3'
 
-import {VisConfig, VisQueryResponse, VisualizationDefinition} from './types';
-import {fromSheetsToD3Format} from './currency_formatter';
+import { VisConfig, VisQueryResponse, VisualizationDefinition } from './types'
 
-export {d3};
+export { d3 }
 
 export const extractHorizontalPathMatch = (
   path: string | null | undefined
 ): RegExpMatchArray | null => {
-  if (!path) return null;
-  return path.match(/,([^C]+)C/);
-};
-
-export const formatType = (valueFormat: string) => {
-  const format = fromSheetsToD3Format(valueFormat);
-  return d3.format(format);
-};
+  if (!path) return null
+  return path.match(/,([^C]+)C/)
+}
 
 export const handleErrors = (
   vis: VisualizationDefinition,
@@ -34,16 +28,16 @@ export const handleErrors = (
     min: number,
     max: number
   ): boolean => {
-    if (!vis.addError || !vis.clearErrors) return false;
+    if (!vis.addError || !vis.clearErrors) return false
     if (count < min) {
       vis.addError({
         title: `Not Enough ${noun}s`,
         message: `This visualization requires ${
           min === max ? 'exactly' : 'at least'
         } ${min} ${noun.toLowerCase()}${min === 1 ? '' : 's'}.`,
-        group,
-      });
-      return false;
+        group
+      })
+      return false
     }
     if (count > max) {
       vis.addError({
@@ -51,15 +45,15 @@ export const handleErrors = (
         message: `This visualization requires ${
           min === max ? 'exactly' : 'no more than'
         } ${max} ${noun.toLowerCase()}${min === 1 ? '' : 's'}.`,
-        group,
-      });
-      return false;
+        group
+      })
+      return false
     }
-    vis.clearErrors(group);
-    return true;
-  };
+    vis.clearErrors(group)
+    return true
+  }
 
-  const {pivots, dimensions, measure_like: measures} = res.fields;
+  const { pivots, dimensions, measure_like: measures } = res.fields
 
   return (
     check(
@@ -83,5 +77,5 @@ export const handleErrors = (
       options.min_measures,
       options.max_measures
     )
-  );
-};
+  )
+}
